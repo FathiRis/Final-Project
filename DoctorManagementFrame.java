@@ -60,4 +60,3 @@ public class DoctorManagementFrame extends JFrame {
         }
     }
 }
-//M.R.F.Buri

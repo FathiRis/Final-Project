@@ -68,4 +68,3 @@ public class PharmacyInventoryFrame extends JFrame {
         }
     }
 }
-//buruwek
