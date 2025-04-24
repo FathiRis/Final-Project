@@ -41,7 +41,7 @@ public class PharmacyInventoryFrame extends JFrame {
         add(panel);
 
         addButton.addActionListener(new AddMedicineAction());
-        viewButton.addActionListener(e -> new ViewInventoryFrame());
+        // viewButton.addActionListener(e -> new ViewInventoryFrame());
 
         setVisible(true);
     }

@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.sql.*;
 
 public class PatientManagementFrame extends JFrame {
@@ -41,7 +40,7 @@ public class PatientManagementFrame extends JFrame {
         add(panel);
 
         addButton.addActionListener(new AddPatientAction());
-        viewButton.addActionListener(e -> new ViewPatientsFrame());
+        // viewButton.addActionListener(e -> new ViewPatientsFrame());
 
         setVisible(true);
     }
@@ -53,7 +52,7 @@ public class PatientManagementFrame extends JFrame {
             String address = addressField.getText();
 
             try (Connection conn = DatabaseConfig.getConnection();
-                 PreparedStatement stmt = conn.prepareStatement("INSERT INTO patients (name, age, address) VALUES (?, ?, ?)");) {
+                 PreparedStatement stmt = conn.prepareStatement("INSERT INTO patients (name, age, address) VALUES (?, ?, ?)")) {
                 stmt.setString(1, name);
                 stmt.setInt(2, age);
                 stmt.setString(3, address);
@@ -64,5 +63,10 @@ public class PatientManagementFrame extends JFrame {
                 JOptionPane.showMessageDialog(null, "Error adding patient", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
+    }
+
+    // Add this method to run the frame
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(PatientManagementFrame::new);
     }
 }

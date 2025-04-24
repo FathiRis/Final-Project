@@ -37,7 +37,7 @@ public class DoctorManagementFrame extends JFrame {
         add(panel);
 
         addButton.addActionListener(new AddDoctorAction());
-        viewButton.addActionListener(e -> new ViewDoctorsFrame());
+        // viewButton.addActionListener(e -> new ViewDoctorsFrame());
 
         setVisible(true);
     }

@@ -41,7 +41,7 @@ public class BillingSystemFrame extends JFrame {
         add(panel);
 
         addButton.addActionListener(new AddBillAction());
-        viewButton.addActionListener(e -> new ViewBillsFrame());
+        // viewButton.addActionListener(e -> new ViewBillsFrame());
 
         setVisible(true);
     }

@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.sql.*;
 
 public class AppointmentSchedulingFrame extends JFrame {
@@ -53,7 +52,9 @@ public class AppointmentSchedulingFrame extends JFrame {
             String date = dateField.getText();
 
             try (Connection conn = DatabaseConfig.getConnection();
-                 PreparedStatement stmt = conn.prepareStatement("INSERT INTO appointments (patient_id, doctor_id, date) VALUES (?, ?, ?)");) {
+                 PreparedStatement stmt = conn.prepareStatement(
+                     "INSERT INTO appointments (patient_id, doctor_id, date) VALUES (?, ?, ?)")) {
+
                 stmt.setString(1, patientId);
                 stmt.setString(2, doctorId);
                 stmt.setString(3, date);
@@ -64,5 +65,10 @@ public class AppointmentSchedulingFrame extends JFrame {
                 JOptionPane.showMessageDialog(null, "Error scheduling appointment", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
+    }
+
+    // Main method to run independently
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(AppointmentSchedulingFrame::new);
     }
 }
